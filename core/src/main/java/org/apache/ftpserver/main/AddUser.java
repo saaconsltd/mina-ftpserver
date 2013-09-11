@@ -27,14 +27,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ftpserver.FtpServer;
+import org.apache.ftpserver.authority.ConcurrentLoginPermission;
+import org.apache.ftpserver.authority.TransferRatePermission;
+import org.apache.ftpserver.authority.WritePermission;
 import org.apache.ftpserver.ftplet.Authority;
 import org.apache.ftpserver.ftplet.UserManager;
 import org.apache.ftpserver.impl.DefaultFtpServer;
 import org.apache.ftpserver.usermanager.impl.BaseUser;
-import org.apache.ftpserver.usermanager.impl.ConcurrentLoginPermission;
 import org.apache.ftpserver.usermanager.impl.PropertiesUserManager;
-import org.apache.ftpserver.usermanager.impl.TransferRatePermission;
-import org.apache.ftpserver.usermanager.impl.WritePermission;
 
 /**
  * Used to add users to the user manager for a particular FtpServer configuration

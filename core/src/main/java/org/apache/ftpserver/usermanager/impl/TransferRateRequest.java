@@ -19,7 +19,7 @@
 
 package org.apache.ftpserver.usermanager.impl;
 
-import org.apache.ftpserver.ftplet.AuthorizationRequest;
+import org.apache.ftpserver.ftplet.TransferRateAuthorizationRequest;
 
 /**
  * <strong>Internal class, do not use directly.</strong>
@@ -28,7 +28,7 @@ import org.apache.ftpserver.ftplet.AuthorizationRequest;
  *
  * @author <a href="http://mina.apache.org">Apache MINA Project</a>
  */
-public class TransferRateRequest implements AuthorizationRequest {
+public class TransferRateRequest implements TransferRateAuthorizationRequest {
 
     private int maxDownloadRate = 0;
 

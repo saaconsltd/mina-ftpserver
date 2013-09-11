@@ -30,6 +30,9 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.apache.ftpserver.FtpServerConfigurationException;
+import org.apache.ftpserver.authority.ConcurrentLoginPermission;
+import org.apache.ftpserver.authority.TransferRatePermission;
+import org.apache.ftpserver.authority.WritePermission;
 import org.apache.ftpserver.ftplet.Authentication;
 import org.apache.ftpserver.ftplet.AuthenticationFailedException;
 import org.apache.ftpserver.ftplet.Authority;

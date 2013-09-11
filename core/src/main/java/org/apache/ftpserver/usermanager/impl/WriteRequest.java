@@ -19,7 +19,7 @@
 
 package org.apache.ftpserver.usermanager.impl;
 
-import org.apache.ftpserver.ftplet.AuthorizationRequest;
+import org.apache.ftpserver.ftplet.WriteAuthorizationRequest;
 
 /**
  * <strong>Internal class, do not use directly.</strong>
@@ -28,7 +28,7 @@ import org.apache.ftpserver.ftplet.AuthorizationRequest;
  *
  * @author <a href="http://mina.apache.org">Apache MINA Project</a>
  */
-public class WriteRequest implements AuthorizationRequest {
+public class WriteRequest implements WriteAuthorizationRequest {
 
     private String file;
 

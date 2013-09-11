@@ -17,43 +17,19 @@
  * under the License.
  */
 
-package org.apache.ftpserver.usermanager;
-
-import org.apache.ftpserver.ftplet.Authentication;
+package org.apache.ftpserver.ftplet;
 
 /**
- * Class representing an anonymous authentication attempt
+ * Represents a write request
  *
  * @author <a href="http://mina.apache.org">Apache MINA Project</a>
  */
-public class AnonymousAuthentication implements Authentication {
-
-    private UserMetadata userMetadata;
+public interface WriteAuthorizationRequest extends AuthorizationRequest {
 
     /**
-     * Default constructor
-     */
-    public AnonymousAuthentication() {
-        // empty
-    }
-
-    /**
-     * Constructor with an additional user metadata parameter
+     * Get the file or directory to which write access is requested
      * 
-     * @param userMetadata
-     *            User metadata
+     * @return the file The file or directory
      */
-    public AnonymousAuthentication(UserMetadata userMetadata) {
-        this.userMetadata = userMetadata;
-    }
-
-    /**
-     * Retrive the user metadata
-     * 
-     * @return The user metadata
-     */
-    public UserMetadata getUserMetadata() {
-        return userMetadata;
-    }
-
+    public String getFile();
 }

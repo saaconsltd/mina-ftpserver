@@ -17,43 +17,34 @@
  * under the License.
  */
 
-package org.apache.ftpserver.usermanager;
-
-import org.apache.ftpserver.ftplet.Authentication;
+package org.apache.ftpserver.ftplet;
 
 /**
- * Class representing an anonymous authentication attempt
+ * Request for getting the maximum allowed transfer rates for a user 
  *
- * @author <a href="http://mina.apache.org">Apache MINA Project</a>
+ * @author <a href="http://mina.apache.org">Apache MINA Project</a> 
  */
-public class AnonymousAuthentication implements Authentication {
-
-    private UserMetadata userMetadata;
+public interface TransferRateAuthorizationRequest extends AuthorizationRequest {
 
     /**
-     * Default constructor
+     * @return the maxDownloadRate
      */
-    public AnonymousAuthentication() {
-        // empty
-    }
+    public int getMaxDownloadRate();
 
     /**
-     * Constructor with an additional user metadata parameter
-     * 
-     * @param userMetadata
-     *            User metadata
+     * @param maxDownloadRate
+     *            the maxDownloadRate to set
      */
-    public AnonymousAuthentication(UserMetadata userMetadata) {
-        this.userMetadata = userMetadata;
-    }
+    public void setMaxDownloadRate(int maxDownloadRate);
 
     /**
-     * Retrive the user metadata
-     * 
-     * @return The user metadata
+     * @return the maxUploadRate
      */
-    public UserMetadata getUserMetadata() {
-        return userMetadata;
-    }
+    public int getMaxUploadRate();
 
+    /**
+     * @param maxUploadRate
+     *            the maxUploadRate to set
+     */
+    public void setMaxUploadRate(int maxUploadRate);
 }

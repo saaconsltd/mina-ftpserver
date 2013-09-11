@@ -22,6 +22,9 @@ package org.apache.ftpserver.usermanager.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ftpserver.authority.ConcurrentLoginPermission;
+import org.apache.ftpserver.authority.TransferRatePermission;
+import org.apache.ftpserver.authority.WritePermission;
 import org.apache.ftpserver.ftplet.Authority;
 import org.apache.ftpserver.ftplet.FtpException;
 import org.apache.ftpserver.usermanager.ClearTextPasswordEncryptor;

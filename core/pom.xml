@@ -68,6 +68,7 @@
 						<Bundle-SymbolicName> ${project.artifactId}</Bundle-SymbolicName>
 						<Bundle-Vendor>The Apache Software Foundation</Bundle-Vendor>
 						<Export-Package> org.apache.ftpserver;version=${project.version},
+							org.apache.ftpserver.authority;version=${project.version}, 
 							org.apache.ftpserver.command;version=${project.version},
 							org.apache.ftpserver.config.spring;version=${project.version},
 							org.apache.ftpserver.filesystem.nativefs;version=${project.version},
