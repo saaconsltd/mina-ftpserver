@@ -30,6 +30,16 @@ import java.util.Date;
 public interface FtpStatistics {
 
     /**
+     * Set statistics observer.
+     */
+    void setObserver(StatisticsObserver observer);
+
+    /**
+     * Set file observer.
+     */
+    void setFileObserver(FileObserver observer);
+
+    /**
      * Get the server start time.
      * @return The {@link Date} when the server started
      */
@@ -136,4 +146,11 @@ public interface FtpStatistics {
      * @return The total number of logins for the provided user and IP address
      */
     int getCurrentUserLoginNumber(User user, InetAddress ipAddress);
+
+    /**
+     * Reset all cumulative total counters. Do not reset current counters, like
+     * current logins, otherwise these will become negative when someone
+     * disconnects.
+     */
+    void resetStatisticsCounters();
 }

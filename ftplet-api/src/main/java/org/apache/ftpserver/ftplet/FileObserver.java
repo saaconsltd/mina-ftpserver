@@ -17,13 +17,9 @@
  * under the License.
  */
 
-package org.apache.ftpserver.impl;
-
-import org.apache.ftpserver.ftplet.FtpFile;
+package org.apache.ftpserver.ftplet;
 
 /**
- * <strong>Internal class, do not use directly.</strong>
- * 
  * This is the file related activity observer.
  *
  * @author <a href="http://mina.apache.org">Apache MINA Project</a>
@@ -33,26 +29,26 @@ public interface FileObserver {
     /**
      * User file upload notification.
      */
-    void notifyUpload(FtpIoSession session, FtpFile file, long size);
+    void notifyUpload(FtpSession session, FtpFile file, long size);
 
     /**
      * User file download notification.
      */
-    void notifyDownload(FtpIoSession session, FtpFile file, long size);
+    void notifyDownload(FtpSession session, FtpFile file, long size);
 
     /**
      * User file delete notification.
      */
-    void notifyDelete(FtpIoSession session, FtpFile file);
+    void notifyDelete(FtpSession session, FtpFile file);
 
     /**
      * User make directory notification.
      */
-    void notifyMkdir(FtpIoSession session, FtpFile file);
+    void notifyMkdir(FtpSession session, FtpFile file);
 
     /**
      * User remove directory notification.
      */
-    void notifyRmdir(FtpIoSession session, FtpFile file);
+    void notifyRmdir(FtpSession session, FtpFile file);
 
 }
