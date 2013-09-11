@@ -33,16 +33,6 @@ import org.apache.ftpserver.ftplet.FtpStatistics;
 public interface ServerFtpStatistics extends FtpStatistics {
 
     /**
-     * Set statistics observer.
-     */
-    void setObserver(StatisticsObserver observer);
-
-    /**
-     * Set file observer.
-     */
-    void setFileObserver(FileObserver observer);
-
-    /**
      * Increment upload count.
      */
     void setUpload(FtpIoSession session, FtpFile file, long size);
@@ -91,11 +81,4 @@ public interface ServerFtpStatistics extends FtpStatistics {
      * Decrement current login count.
      */
     void setLogout(FtpIoSession session);
-
-    /**
-     * Reset all cumulative total counters. Do not reset current counters, like
-     * current logins, otherwise these will become negative when someone
-     * disconnects.
-     */
-    void resetStatisticsCounters();
 }

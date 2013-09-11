@@ -17,13 +17,11 @@
  * under the License.
  */
 
-package org.apache.ftpserver.impl;
+package org.apache.ftpserver.ftplet;
 
 import java.net.InetAddress;
 
 /**
- * <strong>Internal class, do not use directly.</strong>
- * 
  * FTP statistics observer interface.
  *
  * @author <a href="http://mina.apache.org">Apache MINA Project</a>
