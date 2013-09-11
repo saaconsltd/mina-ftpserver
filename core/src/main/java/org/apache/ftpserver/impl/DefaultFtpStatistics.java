@@ -27,7 +27,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.apache.ftpserver.ftplet.FileObserver;
 import org.apache.ftpserver.ftplet.FtpFile;
+import org.apache.ftpserver.ftplet.StatisticsObserver;
 import org.apache.ftpserver.ftplet.User;
 
 /**
@@ -423,7 +425,7 @@ public class DefaultFtpStatistics implements ServerFtpStatistics {
 
         FileObserver fileObserver = this.fileObserver;
         if (fileObserver != null) {
-            fileObserver.notifyUpload(session, file, size);
+            fileObserver.notifyUpload(session.getFtpletSession(), file, size);
         }
     }
 
@@ -439,7 +441,7 @@ public class DefaultFtpStatistics implements ServerFtpStatistics {
 
         FileObserver fileObserver = this.fileObserver;
         if (fileObserver != null) {
-            fileObserver.notifyDownload(session, file, size);
+            fileObserver.notifyDownload(session.getFtpletSession(), file, size);
         }
     }
 
@@ -454,7 +456,7 @@ public class DefaultFtpStatistics implements ServerFtpStatistics {
 
         FileObserver fileObserver = this.fileObserver;
         if (fileObserver != null) {
-            fileObserver.notifyDelete(session, file);
+            fileObserver.notifyDelete(session.getFtpletSession(), file);
         }
     }
 
@@ -469,7 +471,7 @@ public class DefaultFtpStatistics implements ServerFtpStatistics {
 
         FileObserver fileObserver = this.fileObserver;
         if (fileObserver != null) {
-            fileObserver.notifyMkdir(session, file);
+            fileObserver.notifyMkdir(session.getFtpletSession(), file);
         }
     }
 
@@ -484,7 +486,7 @@ public class DefaultFtpStatistics implements ServerFtpStatistics {
 
         FileObserver fileObserver = this.fileObserver;
         if (fileObserver != null) {
-            fileObserver.notifyRmdir(session, file);
+            fileObserver.notifyRmdir(session.getFtpletSession(), file);
         }
     }
 
