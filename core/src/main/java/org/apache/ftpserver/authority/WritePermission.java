@@ -17,14 +17,13 @@
  * under the License.
  */
 
-package org.apache.ftpserver.usermanager.impl;
+package org.apache.ftpserver.authority;
 
 import org.apache.ftpserver.ftplet.Authority;
 import org.apache.ftpserver.ftplet.AuthorizationRequest;
+import org.apache.ftpserver.ftplet.WriteAuthorizationRequest;
 
 /**
- * <strong>Internal class, do not use directly.</strong>
- * 
  * Class representing a write permission
  *
  * @author <a href="http://mina.apache.org">Apache MINA Project</a>
@@ -55,8 +54,8 @@ public class WritePermission implements Authority {
      * @see Authority#authorize(AuthorizationRequest)
      */
     public AuthorizationRequest authorize(final AuthorizationRequest request) {
-        if (request instanceof WriteRequest) {
-            WriteRequest writeRequest = (WriteRequest) request;
+        if (request instanceof WriteAuthorizationRequest) {
+            WriteAuthorizationRequest writeRequest = (WriteAuthorizationRequest) request;
 
             String requestFile = writeRequest.getFile();
 
@@ -74,7 +73,7 @@ public class WritePermission implements Authority {
      * @see Authority#canAuthorize(AuthorizationRequest)
      */
     public boolean canAuthorize(final AuthorizationRequest request) {
-        return request instanceof WriteRequest;
+        return request instanceof WriteAuthorizationRequest;
     }
 
 }

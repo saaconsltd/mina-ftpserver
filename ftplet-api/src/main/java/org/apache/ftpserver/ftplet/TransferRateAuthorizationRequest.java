@@ -17,51 +17,34 @@
  * under the License.
  */
 
-package org.apache.ftpserver.usermanager.impl;
-
-import org.apache.ftpserver.ftplet.TransferRateAuthorizationRequest;
+package org.apache.ftpserver.ftplet;
 
 /**
- * <strong>Internal class, do not use directly.</strong>
- * 
- * Request for getting the maximum allowed transfer rates for a user
+ * Request for getting the maximum allowed transfer rates for a user 
  *
- * @author <a href="http://mina.apache.org">Apache MINA Project</a>
+ * @author <a href="http://mina.apache.org">Apache MINA Project</a> 
  */
-public class TransferRateRequest implements TransferRateAuthorizationRequest {
-
-    private int maxDownloadRate = 0;
-
-    private int maxUploadRate = 0;
+public interface TransferRateAuthorizationRequest extends AuthorizationRequest {
 
     /**
      * @return the maxDownloadRate
      */
-    public int getMaxDownloadRate() {
-        return maxDownloadRate;
-    }
+    public int getMaxDownloadRate();
 
     /**
      * @param maxDownloadRate
      *            the maxDownloadRate to set
      */
-    public void setMaxDownloadRate(int maxDownloadRate) {
-        this.maxDownloadRate = maxDownloadRate;
-    }
+    public void setMaxDownloadRate(int maxDownloadRate);
 
     /**
      * @return the maxUploadRate
      */
-    public int getMaxUploadRate() {
-        return maxUploadRate;
-    }
+    public int getMaxUploadRate();
 
     /**
      * @param maxUploadRate
      *            the maxUploadRate to set
      */
-    public void setMaxUploadRate(int maxUploadRate) {
-        this.maxUploadRate = maxUploadRate;
-    }
-
+    public void setMaxUploadRate(int maxUploadRate);
 }

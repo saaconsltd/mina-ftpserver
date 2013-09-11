@@ -17,47 +17,22 @@
  * under the License.
  */
 
-package org.apache.ftpserver.usermanager.impl;
-
-import org.apache.ftpserver.authority.ConcurrentLoginPermission;
-import org.apache.ftpserver.ftplet.ConcurrentLoginAuthorizationRequest;
+package org.apache.ftpserver.ftplet;
 
 /**
- * <strong>Internal class, do not use directly.</strong>
- * 
- * Class representing a request to log in a number of concurrent times
+ * Represents a request to log in a number of concurrent times
  *
- * @author <a href="http://mina.apache.org">Apache MINA Project</a>
+ * @author <a href="http://mina.apache.org">Apache MINA Project</a> 
  */
-public class ConcurrentLoginRequest implements ConcurrentLoginAuthorizationRequest {
-
-    private final int concurrentLogins;
-
-    private final int concurrentLoginsFromThisIP;
-
-    private int maxConcurrentLogins = 0;
-
-    private int maxConcurrentLoginsPerIP = 0;
-
-    /**
-     * @param concurrentLogins
-     * @param concurrentLoginsFromThisIP
-     */
-    public ConcurrentLoginRequest(int concurrentLogins,
-            int concurrentLoginsFromThisIP) {
-        super();
-        this.concurrentLogins = concurrentLogins;
-        this.concurrentLoginsFromThisIP = concurrentLoginsFromThisIP;
-    }
+public interface ConcurrentLoginAuthorizationRequest extends
+        AuthorizationRequest {
 
     /**
      * The number of concurrent logins requested
      * 
      * @return the concurrentLogins The number of current concurrent logins
      */
-    public int getConcurrentLogins() {
-        return concurrentLogins;
-    }
+    public int getConcurrentLogins();
 
     /**
      * The number of concurrent logins from this IP requested
@@ -65,9 +40,7 @@ public class ConcurrentLoginRequest implements ConcurrentLoginAuthorizationReque
      * @return the concurrentLoginsFromThisIP The number of current concurrent
      *         logins from this IP
      */
-    public int getConcurrentLoginsFromThisIP() {
-        return concurrentLoginsFromThisIP;
-    }
+    public int getConcurrentLoginsFromThisIP();
 
     /**
      * The maximum allowed concurrent logins for this user, or 0 if no limit is
@@ -75,9 +48,7 @@ public class ConcurrentLoginRequest implements ConcurrentLoginAuthorizationReque
      * 
      * @return The maximum allowed concurrent logins
      */
-    public int getMaxConcurrentLogins() {
-        return maxConcurrentLogins;
-    }
+    public int getMaxConcurrentLogins();
 
     /**
      * Set the maximum allowed concurrent logins for this user
@@ -85,9 +56,7 @@ public class ConcurrentLoginRequest implements ConcurrentLoginAuthorizationReque
      * @param maxConcurrentLogins
      *            Set max allowed concurrent connections
      */
-    public void setMaxConcurrentLogins(int maxConcurrentLogins) {
-        this.maxConcurrentLogins = maxConcurrentLogins;
-    }
+    public void setMaxConcurrentLogins(int maxConcurrentLogins);
 
     /**
      * The maximum allowed concurrent logins per IP for this user, or 0 if no
@@ -96,9 +65,7 @@ public class ConcurrentLoginRequest implements ConcurrentLoginAuthorizationReque
      * 
      * @return The maximum allowed concurrent logins per IP
      */
-    public int getMaxConcurrentLoginsPerIP() {
-        return maxConcurrentLoginsPerIP;
-    }
+    public int getMaxConcurrentLoginsPerIP();
 
     /**
      * Set the maximum allowed concurrent logins per IP for this user
@@ -106,7 +73,5 @@ public class ConcurrentLoginRequest implements ConcurrentLoginAuthorizationReque
      * @param maxConcurrentLoginsPerIP
      *            Set max allowed concurrent connections per IP
      */
-    public void setMaxConcurrentLoginsPerIP(int maxConcurrentLoginsPerIP) {
-        this.maxConcurrentLoginsPerIP = maxConcurrentLoginsPerIP;
-    }
+    public void setMaxConcurrentLoginsPerIP(int maxConcurrentLoginsPerIP);
 }

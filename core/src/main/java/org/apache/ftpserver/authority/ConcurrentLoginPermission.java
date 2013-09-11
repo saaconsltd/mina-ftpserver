@@ -17,15 +17,19 @@
  * under the License.
  */
 
-package org.apache.ftpserver.usermanager.impl;
+package org.apache.ftpserver.authority;
 
 import org.apache.ftpserver.ftplet.Authority;
 import org.apache.ftpserver.ftplet.AuthorizationRequest;
+import org.apache.ftpserver.ftplet.ConcurrentLoginAuthorizationRequest;
 
 /**
- * <strong>Internal class, do not use directly.</strong>
- * 
- * The max upload rate permission
+ * Controls how many logins are valid for a given user.  This is
+ * checked at login time by passing an instance to the 
+ * {@link User#authorize(AuthorizationRequest)} method.  This
+ * class first checks that the user logging in will not exceed
+ * the limits, and if valid will set the max values within the
+ * {@link AuthorizationRequest}.
  *
  * @author <a href="http://mina.apache.org">Apache MINA Project</a>
  */
@@ -45,8 +49,8 @@ public class ConcurrentLoginPermission implements Authority {
      * @see Authority#authorize(AuthorizationRequest)
      */
     public AuthorizationRequest authorize(AuthorizationRequest request) {
-        if (request instanceof ConcurrentLoginRequest) {
-            ConcurrentLoginRequest concurrentLoginRequest = (ConcurrentLoginRequest) request;
+        if (request instanceof ConcurrentLoginAuthorizationRequest) {
+            ConcurrentLoginAuthorizationRequest concurrentLoginRequest = (ConcurrentLoginAuthorizationRequest) request;
 
             if (maxConcurrentLogins != 0
                     && maxConcurrentLogins < concurrentLoginRequest
@@ -73,6 +77,6 @@ public class ConcurrentLoginPermission implements Authority {
      * @see Authority#canAuthorize(AuthorizationRequest)
      */
     public boolean canAuthorize(AuthorizationRequest request) {
-        return request instanceof ConcurrentLoginRequest;
+        return request instanceof ConcurrentLoginAuthorizationRequest;
     }
 }

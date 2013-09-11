@@ -19,6 +19,8 @@
 
 package org.apache.ftpserver.usermanager.impl;
 
+import org.apache.ftpserver.authority.ConcurrentLoginPermission;
+
 import junit.framework.TestCase;
 
 /**

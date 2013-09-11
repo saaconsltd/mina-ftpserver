@@ -17,15 +17,17 @@
  * under the License.
  */
 
-package org.apache.ftpserver.usermanager.impl;
+package org.apache.ftpserver.authority;
 
 import org.apache.ftpserver.ftplet.Authority;
 import org.apache.ftpserver.ftplet.AuthorizationRequest;
+import org.apache.ftpserver.ftplet.TransferRateAuthorizationRequest;
 
 /**
- * <strong>Internal class, do not use directly.</strong>
- * 
- * The max upload rate permission
+ * The max upload and download rate permission.  Can be used
+ * to handle the AuthorizationRequest checked before a file
+ * transfer takes place in order to restrict the bandwidth 
+ * allocated to a particular user.
  *
  * @author <a href="http://mina.apache.org">Apache MINA Project</a>
  */
@@ -44,8 +46,8 @@ public class TransferRatePermission implements Authority {
      * @see Authority#authorize(AuthorizationRequest)
      */
     public AuthorizationRequest authorize(AuthorizationRequest request) {
-        if (request instanceof TransferRateRequest) {
-            TransferRateRequest transferRateRequest = (TransferRateRequest) request;
+        if (request instanceof TransferRateAuthorizationRequest) {
+            TransferRateAuthorizationRequest transferRateRequest = (TransferRateAuthorizationRequest) request;
 
             transferRateRequest.setMaxDownloadRate(maxDownloadRate);
             transferRateRequest.setMaxUploadRate(maxUploadRate);
@@ -60,6 +62,6 @@ public class TransferRatePermission implements Authority {
      * @see Authority#canAuthorize(AuthorizationRequest)
      */
     public boolean canAuthorize(AuthorizationRequest request) {
-        return request instanceof TransferRateRequest;
+        return request instanceof TransferRateAuthorizationRequest;
     }
 }

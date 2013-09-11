@@ -19,6 +19,8 @@
 
 package org.apache.ftpserver.usermanager.impl;
 
+import org.apache.ftpserver.authority.WritePermission;
+
 import junit.framework.TestCase;
 
 /**
