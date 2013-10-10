@@ -56,13 +56,15 @@ public class PassivePorts {
     private String passivePortsString;
 
     private boolean checkIfBound;
+    
+    private boolean unlimited;
 
     /**
      * Parse a string containing passive ports
      * 
      * @param portsString
      *            A string of passive ports, can contain a single port (as an
-     *            integer), multiple ports seperated by commas (e.g.
+     *            integer), multiple ports separated by commas (e.g.
      *            123,124,125) or ranges of ports, including open ended ranges
      *            (e.g. 123-125, 30000-, -1023). Combinations for single ports
      *            and ranges is also supported.
@@ -162,10 +164,11 @@ public class PassivePorts {
         this.usedList = new HashSet<Integer>(passivePorts.size());
 
         this.checkIfBound = checkIfBound;
+        this.unlimited = (freeList.size() == 1 && freeList.contains(0));
     }
 
     /**
-     * Checks that the port of not bound by another application
+     * Checks that the port is not bound by another application
      */
     private boolean checkPortUnbound(int port) {
         // is this check disabled?
@@ -199,7 +202,11 @@ public class PassivePorts {
     }
 
     public synchronized int reserveNextPort() {
-    	// create a copy of the free ports, so that we can keep track of the tested ports
+        if (this.unlimited) {
+            return 0;
+        }
+
+        // create a copy of the free ports, so that we can keep track of the tested ports
     	List<Integer> freeCopy = new ArrayList<Integer>(freeList);
     	
         // Loop until we have found a port, or exhausted all available ports
@@ -230,7 +237,7 @@ public class PassivePorts {
     }
 
     public synchronized void releasePort(final int port) {
-        if (port == 0) {
+        if (unlimited || port == 0) {
             // Ignore port 0 being released,
             // since its not put on the used list
 
